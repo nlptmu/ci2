@@ -3,6 +3,7 @@ import pandas as pd
 import calendar
 from datetime import datetime
 from sklearn.model_selection import train_test_split
+import argparse
 
 COLUMNS = [
     'Hotel ID', 'Hotel Name', 'Reviewer', 'Reviewer Profile Link',
@@ -19,7 +20,6 @@ RELEVANT_COLUMNS = [
 ]
 
 def parse_args():
-    import argparse
     parser = argparse.ArgumentParser(description="Preprocess hotel review data.")
     parser.add_argument("--input_file", type=str, default="data/raw/State_Hotel_reviews_v1.txt",
                         help="Path to the raw data file.")
