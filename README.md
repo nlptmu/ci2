@@ -26,6 +26,13 @@ This project implements the theoretical framework and experimental methodology f
 │   └── TripAdvisorRequest.py  # Scrape hotel reviews from TripAdvisor
 ├── preprocessing/             # Data preprocessing module
 │   └── DataPreprocessing.py   # Data cleaning, splitting, feature extraction
+├── topic_modeling/            # Topic modeling and keyword extraction
+│   ├── vis_business_pos.ipynb # Business/Solo positive reviews topic analysis
+│   ├── vis_business_neg.ipynb # Business/Solo negative reviews topic analysis
+│   ├── vis_family_pos.ipynb   # Family positive reviews topic analysis
+│   ├── vis_family_neg.ipynb   # Family negative reviews topic analysis
+│   ├── vis_friend_pos.ipynb   # Friend/Couple positive reviews topic analysis
+│   └── vis_friend_neg.ipynb   # Friend/Couple negative reviews topic analysis
 ├── multitask_learning/        # Multi-task learning module
 │   ├── DatasetModule.py       # Data loading and preparation
 │   ├── ModelModule.py         # Deep learning model architecture
@@ -63,7 +70,36 @@ python preprocessing/DataPreprocessing.py \
     --seed 1207
 ```
 
-### 3. Multi-Task Learning (multitask_learning)
+### 3. Topic Modeling (topic_modeling)
+
+This module implements **BERTopic** for unsupervised topic modeling and keyword extraction from hotel reviews. The analysis is conducted separately for each traveler segment (Business/Solo, Family, Friend/Couple) and sentiment polarity (positive/negative), resulting in six Jupyter notebooks.
+
+**Key Techniques:**
+- **Embeddings**: Sentence-Transformers (all-MiniLM-L6-v2) for semantic text representation
+- **Dimensionality Reduction**: UMAP (Uniform Manifold Approximation and Projection)
+- **Clustering**: HDBSCAN (Hierarchical Density-Based Spatial Clustering)
+- **Topic Representation**: Class-based TF-IDF with KeyBERT-inspired fine-tuning
+
+**Workflow:**
+1. **Load and Filter Data**: Select reviews by traveler type and rating thresholds
+   - Positive: 4-5 stars on key aspects (Value, Location, Rooms)
+   - Negative: 1-2 stars on key aspects
+2. **Text Preprocessing**: Tokenization, lemmatization, stopword removal
+3. **Topic Modeling**: BERTopic pipeline extracts semantic topics
+4. **Topic Reduction**: Consolidate similar topics (default: 8 topics per segment)
+5. **Keyword Extraction**: Extract top 30-100 keywords per topic
+6. **Visualization**: Generate interactive topic visualizations
+   - Topic distance maps (intertopic distance)
+   - Document-topic mappings
+   - Topic bar charts
+   - Topic similarity heatmaps
+
+**Notebooks:**
+- `vis_business_pos.ipynb` / `vis_business_neg.ipynb`: Business/Solo traveler topics
+- `vis_family_pos.ipynb` / `vis_family_neg.ipynb`: Family traveler topics
+- `vis_friend_pos.ipynb` / `vis_friend_neg.ipynb`: Friend/Couple traveler topics
+
+### 4. Multi-Task Learning (multitask_learning)
 
 This module uses the PyTorch Lightning framework to implement joint traveler type classification and aspect-based sentiment analysis.
 
@@ -101,7 +137,7 @@ python multitask_learning/Trainer.py \
 - `bert-cnn`: BERT + TextCNN (recommended)
 - `bert`: Standard BERT
 
-### 4. Model Explainability (explainability)
+### 5. Model Explainability (explainability)
 
 **ModelExplainer.py**
 
@@ -138,6 +174,10 @@ scikit-learn           # Machine learning tools
 matplotlib             # Plotting
 seaborn                # Statistical visualization
 tqdm                   # Progress bars
+bertopic               # Topic modeling
+sentence-transformers  # Semantic embeddings
+umap-learn             # Dimensionality reduction
+hdbscan                # Clustering algorithm
 ```
 
 ## Environment Setup
