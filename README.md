@@ -100,8 +100,6 @@ python multitask_learning/Trainer.py \
 **Supported Models:**
 - `bert-cnn`: BERT + TextCNN (recommended)
 - `bert`: Standard BERT
-- `bart-cnn`: BART + TextCNN
-- `bart`: Standard BART
 
 ### 4. Model Explainability (explainability)
 
