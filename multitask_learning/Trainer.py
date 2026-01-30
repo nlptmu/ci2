@@ -12,7 +12,7 @@ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.callbacks import ModelCheckpoint
 
 from DatasetModule import TripAdvisorDataModule
-from ModelModule import TripAdvisorModelModule, BertTextCNN, Bert, BartTextCNN, Bart
+from ModelModule import TripAdvisorModelModule, BertTextCNN, Bert
 
 
 os.environ["TOKENIZERS_PARALLELISM"] = "true"
