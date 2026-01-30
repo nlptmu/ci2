@@ -1,4 +1,4 @@
-# Complementary Intelligence Theory: When Does Human Oversight Add Value to AI?
+# When Does Human Oversight Add Value to AI? A Theory of Complementary Intelligence in Content Generation
 
 ## Overview
 
@@ -42,6 +42,38 @@ This project implements the theoretical framework and experimental methodology f
 │   └── ModelExplainer.py      # LIME and SHAP explanations
 ├── requirements.txt           # Python dependencies
 └── README.md                  # This file
+```
+
+## Dependencies
+
+```
+pandas                  # Data manipulation
+torch                   # Deep learning framework
+pytorch-lightning       # Training management
+transformers           # Pre-trained language models
+datasets               # Dataset handling
+lime                   # Model interpretability
+shap                   # Shapley explanations
+numpy                  # Numerical computing
+scikit-learn           # Machine learning tools
+matplotlib             # Plotting
+seaborn                # Statistical visualization
+tqdm                   # Progress bars
+bertopic               # Topic modeling
+sentence-transformers  # Semantic embeddings
+umap-learn             # Dimensionality reduction
+hdbscan                # Clustering algorithm
+```
+
+## Environment Setup
+
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
 
 ## Core Modules
@@ -157,38 +189,6 @@ python explainability/ModelExplainer.py \
     --output_dir outputs/explanations/ \
     --model_path outputs/checkpoint/ \
     --num_instances 100
-```
-
-## Dependencies
-
-```
-pandas                  # Data manipulation
-torch                   # Deep learning framework
-pytorch-lightning       # Training management
-transformers           # Pre-trained language models
-datasets               # Dataset handling
-lime                   # Model interpretability
-shap                   # Shapley explanations
-numpy                  # Numerical computing
-scikit-learn           # Machine learning tools
-matplotlib             # Plotting
-seaborn                # Statistical visualization
-tqdm                   # Progress bars
-bertopic               # Topic modeling
-sentence-transformers  # Semantic embeddings
-umap-learn             # Dimensionality reduction
-hdbscan                # Clustering algorithm
-```
-
-## Environment Setup
-
-```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
 ```
 
 ## License
