@@ -5,10 +5,10 @@ import torch
 from sklearn.metrics import classification_report, confusion_matrix
 import json
 from pathlib import Path
+import argparse
 
 
 def parse_args():
-    import argparse
     parser = argparse.ArgumentParser(description="Run keyword experiment.")
     parser.add_argument("--model_checkpoint", type=str, required=True, help="Path to the model checkpoint")
     parser.add_argument("--test_file", type=str, required=True, help="Path to the test file")
